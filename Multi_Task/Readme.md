@@ -48,5 +48,6 @@ Multi-task learning 的核心在于“共享表示”，就像学霸们共享学
 
 > Reference
 
-[1]. [姿态估计/关键点检测](https://github.com/zh-song/Object-Detection-Papers/blob/Docments/Multi%20task/Pose-OD.md#multi-task)  
-[2]. [自动驾驶场景中多任务案例](https://github.com/zh-song/Object-Detection-Papers/blob/Docments/Multi%20task/OmniDet.md#omnidet-surround-view-cameras-based-multi-task-visual-perception-network-for-autonomous-driving)
+[1]. [多任务学习QA](https://github.com/zihaosoog/CV-NLP-for-beginner/blob/0b98d6cb2dcc3f8439504f116e7d713f5bc2cc1f/Multi_Task/Multi-task%20survey.md)\
+[2]. [姿态估计/关键点检测](https://github.com/zh-song/Object-Detection-Papers/blob/Docments/Multi%20task/Pose-OD.md#multi-task)  \
+[3]. [自动驾驶场景中多任务案例](https://github.com/zh-song/Object-Detection-Papers/blob/Docments/Multi%20task/OmniDet.md#omnidet-surround-view-cameras-based-multi-task-visual-perception-network-for-autonomous-driving)
