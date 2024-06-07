@@ -16,7 +16,7 @@ Prompt Engineering 就是这样一门艺术： **通过设计和优化输入文�
 
 ###  💪  Instruction-Tuned LLM：让 AI 更“听话”
 
-虽然基础模型已经拥有了强大的能力，但ta们有时会像“脱缰的野马”一样，难以控制。这时候就需要 **指令微调** 出场了！
+虽然基础模型已经拥有了强大的能力，但ta们有时会像“脱缰的野马”一样，难以控制。这时候就需要 **指令微调** ，大白话说，**就像你教一个孩子如何完成一个任务！**
 
 > They begin with a base LLM and are **fine-tuned with input-output pairs** that include instructions and attempts to follow those instructions.\
 > **Reinforcement Learning from Human Feedback (RLHF)** is often employed to refine the model further, making it better at being helpful, honest, and harmless.
