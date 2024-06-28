@@ -8,7 +8,7 @@
 ### Q：Semantic Scene Completion 与 occupancy 联系与区别？   
 语义场景补全（Semantic scene completion-SSC）利用有限的观测推理出整个场景的几何和语义信息。有多种不同特征描述子：基于Voxel的，基于TPV的。   
 基于Voxel的特征描述，用数学描述如下：   
-![image.png](files\image.png)    
+![image.png](files/image.png)    
 **区别**：SSC提供更多的语义信息，而Occ只提供是否占用等二值简单分类语义信息更简单。   
 **联系**：常常将SSC的细粒度点云标注通过体素化或者说栅格化得到Occ的GT。Tesla 的Occupancy network可以看作自动驾驶中3D SSC的一个实现。人可以自然的从部分观测中推理出整个场景的几何和语义信息，而SSC同时也涉及两个任务：可观测区域的场景重建和不可观测区域的补全。   
 ### Q：基于camera的Occ方法可以分为几类，分别举例介绍？   
