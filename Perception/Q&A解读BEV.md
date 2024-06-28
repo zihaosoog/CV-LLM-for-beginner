@@ -3,7 +3,8 @@
 根据输入数据不同，分为3种：BEV camera，BEV LiDAR，BEV Fusion   
 ### Q：BEV Camera 分为几类，一般流程是什么？   
 纯视觉感知可分为单目，双目，以及多相机这3种。以单目BEV方案为例：   
-![Untitled.png](files\untitled.png)    
+![untitled](https://github.com/zihaosoog/CV-LLM-for-beginner/assets/67272893/63fec883-8743-4e0d-939c-8d703cd9b188)
+
 1. 2D特征提取   
 2. 特征转换：**可有可无**，转换对于相机的内外参数需求也**可有可无**   
 3. PV-BEV转换[perspective view (PV) to bird’s eye view(BEV)]   
@@ -28,12 +29,12 @@
 
 1. 显式BEV Queries：大小 [H,W,C]，栅格化可学习参数，共H\*W个grid，每个grid的特征维度是C，表示语义信息   
 2. Spatial cross-attention：将每个栅格特征*Qp*按z轴方向Lift，并按间隔设置N个参考点得到N个3D空间参考点；再根据相机内外参将这些3D空间参考点转换为各个视角相机下的2D图像坐标点(由于相机感知范围限制，每个3D空间参考点只有1-2个相机上能找到有限的转换投影)；利用deformable attention在这些2D参考点的基础上，在2D特征图上对周围局部的特征进行采样；将不同相机采样到的特征做加权求和，作为该栅格的BEV特征；   
-    ![Untitled 1.png](files\untitled-1.png)    
-3. Temporal self-attention：对 grid query *Qp*，基于reference point *p *即当前位置坐标(x,y)，对 *cat(Q, B\_(t-1))* 进行 DCN*，*即在当前时刻的* BEV feature *以及上一时刻的 BEV\_(t-1) 两者的 *p *周围进行 DCN；   
-    ![Untitled 2.png](files\untitled-2.png)    
-    Tips：基于reference point的offset和这个采样点的attention weight都由*Qp(z\_q)*经过线性变换得到；   
-    ![Untitled 3.png](files\untitled-3.png)    
-   
+   ![untitled-1](https://github.com/zihaosoog/CV-LLM-for-beginner/assets/67272893/7536663a-1fe2-45b3-8700-6a92e866f8a6) 
+4. Temporal self-attention：对 grid query *Qp*，基于reference point *p *即当前位置坐标(x,y)，对 *cat(Q, B\_(t-1))* 进行 DCN*，*即在当前时刻的* BEV feature *以及上一时刻的 BEV\_(t-1) 两者的 *p *周围进行 DCN；   
+   ![untitled-2](https://github.com/zihaosoog/CV-LLM-for-beginner/assets/67272893/47178130-c2be-45f1-acb8-33cb51949661) 
+    Tips：基于reference point的offset和这个采样点的attention weight都由*Qp(z\_q)*经过线性变换得到；    
+    ![untitled-3](https://github.com/zihaosoog/CV-LLM-for-beginner/assets/67272893/43dc101c-9e8e-42db-9a01-bdb3b2f0b9e0)
+
 ### Q：相机内参与外参分别是什么？作用是什么？涉及到的坐标系是什么？   
 1. 相机内参：是指相机的内部参数，这些参数定义了相机的光学特性和传感器尺寸。内参主要包括焦距（f）、主点（principal point，即光心在图像平面上的投影位置）、以及畸变系数（distortion coefficients，描述镜头引起的图像畸变的参数）。   
 2. 内参的作用：是将相机坐标系下的点坐标转换到像素坐标系中，也就是说，它描述了从三维空间中的点到二维图像平面的映射关系。   
